@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour {
 
-//	public KeyCode keyUp;
-//	public KeyCode keyDown;
+	public KeyCode keyUp;
+	public KeyCode keyDown;
 	public KeyCode keyRight;
 	public KeyCode keyLeft;
 	public float speed;
@@ -30,6 +30,15 @@ public class PlayerMovement : MonoBehaviour {
 		{
 			transform.position += new Vector3(-1,0,0)*speed*Time.deltaTime;
 		}
+
+		if (Input.GetKey (keyUp)) {
+			transform.position += new Vector3(0,0,1)*speed*Time.deltaTime;
+		}
+
+		if (Input.GetKey (keyDown)) {
+			transform.position += new Vector3 (0, 0, -1) * speed * Time.deltaTime;
+		}
+
 
 		if (jump == true) 
 		{
