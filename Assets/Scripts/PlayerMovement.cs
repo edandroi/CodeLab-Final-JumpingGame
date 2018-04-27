@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour {
 	public float jumpSpeed;
 	float jumpSpeedStart;
 	public bool jump = false;
+	public bool dead = false;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,8 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		//PLAYER MOVEMENT
 
 		if (Input.GetKey(keyRight))
 		{
@@ -39,6 +42,7 @@ public class PlayerMovement : MonoBehaviour {
 			transform.position += new Vector3 (0, 0, -1) * speed * Time.deltaTime;
 		}
 
+		// JUMPING
 
 		if (jump == true) 
 		{
@@ -52,14 +56,22 @@ public class PlayerMovement : MonoBehaviour {
 			jumpSpeed = jumpSpeedStart;
 		}
 
-
+		// ENEMY COLLISION: DIE!!!
 
 	}
 
 
-	void OnTriggerEnter ()
+	void OnTriggerEnter (Collider collider)
 	{
-		jump = true;
+
+		if (collider.gameObject.tag == "enemy") {
+			Debug.Log ("Enemy!");
+			jump = false;
+			jumpSpeed = 0;
+//			dead = true;
+		} else {
+			jump = true;
+		}
 	}
 
 	void Jump ()

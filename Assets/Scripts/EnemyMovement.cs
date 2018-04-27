@@ -11,8 +11,7 @@ public class EnemyMovement : MonoBehaviour {
 	// Use this for initialization
 	public void Start () {
 		initialTime = timeToChangeDirection;
-//		ChangeDirection();
-		rb = GetComponent<Rigidbody> ();
+		ChangeDirection();
 	}
 
 	// Update is called once per frame
@@ -33,17 +32,4 @@ public class EnemyMovement : MonoBehaviour {
 //		Quaternion newDirection = Quaternion.Euler (angle, 0, angle);
 		transform.rotation = Quaternion.Euler (0, angle, 0);
 	}
-
-
-
-//	private void ChangeDirection() {
-//		float angle = Random.Range(0f, 360f);
-//		Quaternion quat = Quaternion.AngleAxis(angle, Vector3.forward);
-////		Quaternion quat = Quaternion.Euler(angle,0,angle);
-//		Vector3 newForward = quat * Vector3.forward;
-//		newForward.y = 0;
-//		newForward.Normalize();
-//		transform.forward = newForward;
-//		timeToChangeDirection = initialTime;
-//	}
 }
