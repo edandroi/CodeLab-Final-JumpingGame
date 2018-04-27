@@ -26,20 +26,20 @@ public class PlayerMovement : MonoBehaviour {
 
 		if (Input.GetKey(keyRight))
 		{
-			transform.position += new Vector3(1,0,0)*speed*Time.deltaTime;
+			transform.position += transform.right*speed*Time.deltaTime;
 		}
 
 		if (Input.GetKey(keyLeft))
 		{
-			transform.position += new Vector3(-1,0,0)*speed*Time.deltaTime;
+			transform.position -= transform.right*speed*Time.deltaTime;
 		}
 
 		if (Input.GetKey (keyUp)) {
-			transform.position += new Vector3(0,0,1)*speed*Time.deltaTime;
+			transform.position += transform.forward*speed*Time.deltaTime;
 		}
 
 		if (Input.GetKey (keyDown)) {
-			transform.position += new Vector3 (0, 0, -1) * speed * Time.deltaTime;
+			transform.position -= transform.forward * speed * Time.deltaTime;
 		}
 
 		// JUMPING
@@ -68,7 +68,7 @@ public class PlayerMovement : MonoBehaviour {
 			Debug.Log ("Enemy!");
 			jump = false;
 			jumpSpeed = 0;
-//			dead = true;
+			dead = true;
 		} else {
 			jump = true;
 		}

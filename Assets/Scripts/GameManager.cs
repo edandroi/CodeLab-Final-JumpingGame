@@ -43,12 +43,12 @@ public class GameManager : MonoBehaviour {
 			camScene.gameObject.SetActive (camSwitch);
 		}
 
-//		if (GameObject.Find ("PlayerBall").GetComponent<PlayerMovement> ().dead = true)
-//		{
-//
-//			camScene.gameObject.SetActive (true);
-//			camPlayer.gameObject.SetActive (false);
-//		
-//		}
+		if (GameObject.Find ("PlayerBall").GetComponent<PlayerMovement> ().dead == true)
+		{
+
+			camScene.gameObject.SetActive (true);
+			camPlayer.gameObject.SetActive (false);
+		
+		}
 	}
 }
