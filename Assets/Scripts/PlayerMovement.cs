@@ -13,10 +13,13 @@ public class PlayerMovement : MonoBehaviour {
 	float jumpSpeedStart;
 	public bool jump = false;
 	public bool dead = false;
+	private Rigidbody playerRb;
+	public GameObject explosion;
 
 	// Use this for initialization
 	void Start () {
 		jumpSpeedStart = jumpSpeed;
+		playerRb = GetComponent<Rigidbody> ();
 	}
 	
 	// Update is called once per frame
@@ -42,47 +45,48 @@ public class PlayerMovement : MonoBehaviour {
 			transform.position -= transform.forward * speed * Time.deltaTime;
 		}
 
-		// JUMPING
+//		if (Input.GetKeyDown (KeyCode.D)) {
+//			GameManager.ToggleCamera ();
+//			dead = true;
+//			Destroy (gameObject);
+//			Instantiate (explosion, transform.position, transform.rotation);
+//		}
 
-		if (jump == true) 
-		{
-			GetComponent<Rigidbody> ().useGravity = false;
-			Jump ();
-		}
+		//JUMP ANIMATION
 
-		if (jump == false) 
-		{
-			GetComponent<Rigidbody> ().useGravity = true;
-			jumpSpeed = jumpSpeedStart;
-		}
-
-		// ENEMY COLLISION: DIE!!!
+		var originalScale = transform.localScale;
+		var middleScale = new Vector3 (0.5f, 2f, 0.5f);
+		var hitScale = new Vector3 (1.5f, 0.5f, 1.5f);
+//		float currentSpeed = Mathf.Abs (playerRb.velocity);
+//
+//		if (currentSpeed <= 2.0f) {
+//			transform.localScale = Vector3.Lerp(middleScale, originalScale, playerRb.velocity/jumpSpeed);
+//
+//		}
 
 	}
 
 
 	void OnTriggerEnter (Collider collider)
 	{
-
-		if (collider.gameObject.tag == "enemy") {
-			Debug.Log ("Enemy!");
-			jump = false;
-			jumpSpeed = 0;
+		if (collider.gameObject.tag == "ground") 
+		{
+			Jump ();
+		}
+		if (collider.gameObject.tag == "enemy") 
+		{
+			GameManager.ToggleCamera ();
 			dead = true;
-		} else {
-			jump = true;
+			Destroy (gameObject);
+			Instantiate (explosion, transform.position, transform.rotation);
+	
 		}
 	}
 
 	void Jump ()
 	{
-		transform.position += new Vector3(0,1,0)*jumpSpeed*Time.deltaTime;
-		jumpSpeed -= 0.1f;
 
-		if (jumpSpeed <= 0.5) {
-			jump = false;
-
-		}
+		playerRb.velocity = new Vector3 (0, jumpSpeed, 0);
 
 	}
 }

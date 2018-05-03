@@ -8,6 +8,8 @@ TagManager:
   - enemy
   - player
   - goal
+  - score
+  - mine
   layers:
   - Default
   - TransparentFX

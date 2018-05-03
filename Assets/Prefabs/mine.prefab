@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 54247509348355398}
   m_Layer: 0
   m_Name: mine
-  m_TagString: enemy
+  m_TagString: mine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -58,7 +58,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 9c8d5df2b17db4878a8e277756196542, type: 2}
+  - {fileID: 2100000, guid: 0a71e5b5099d840848f476454c4ac463, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeToChangeDirection: 4
-  speed: 5
+  speed: 3
 --- !u!135 &135968861404056818
 SphereCollider:
   m_ObjectHideFlags: 1
