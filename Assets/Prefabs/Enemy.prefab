@@ -125,5 +125,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 0.1
   timeToChangeDirection: 3
-  speed: 1
+  speed: 0.5
   player: {fileID: 1259916815816686, guid: 9ba8616b02f5748c098c67a4cb716567, type: 2}
