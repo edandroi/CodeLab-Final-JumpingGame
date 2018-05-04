@@ -99,11 +99,9 @@ public class GameManager : MonoBehaviour {
 
 		if (EnemyBehavior.gameOver == true)
 		{
-			Debug.Log ("dead is true");
 
 			timer = timer - Time.deltaTime;
 
-			Debug.Log (timer);
 			if (timer <= 0)
 			{
 				SceneManager.LoadScene("Level00");
