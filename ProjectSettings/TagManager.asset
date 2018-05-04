@@ -10,6 +10,7 @@ TagManager:
   - goal
   - score
   - mine
+  - ui
   layers:
   - Default
   - TransparentFX

@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour {
 	private Rigidbody playerRb;
 	public GameObject explosion;
 
+
 	// Use this for initialization
 	void Start () {
 		jumpSpeedStart = jumpSpeed;
@@ -24,6 +25,8 @@ public class PlayerMovement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+
 
 		//PLAYER MOVEMENT
 
@@ -57,6 +60,10 @@ public class PlayerMovement : MonoBehaviour {
 		var originalScale = transform.localScale;
 		var middleScale = new Vector3 (0.5f, 2f, 0.5f);
 		var hitScale = new Vector3 (1.5f, 0.5f, 1.5f);
+
+
+
+
 //		float currentSpeed = Mathf.Abs (playerRb.velocity);
 //
 //		if (currentSpeed <= 2.0f) {

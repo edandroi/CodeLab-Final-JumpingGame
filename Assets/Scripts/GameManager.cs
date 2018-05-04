@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 		camPlayer = GameObject.Find ("PlayerCamera").GetComponent<Camera> ();
 		camScene = GameObject.Find ("Main Camera").GetComponent<Camera> ();
+//		camPlayerDown = 
 
 		// TWO CAMERAS
 		camPlayer.gameObject.SetActive(false);

@@ -8,37 +8,41 @@ public class EnemyBehavior : MonoBehaviour {
 	public float speed;
 	float initialTime;
 	Rigidbody rb;
-	// Use this for initialization
+	Vector3 direction;
+	public GameObject player;
+	float speedStart;
+	bool gameOver = false;
+
 	void Start () {
-		initialTime = timeToChangeDirection;
-		ChangeDirection();
+		rb = GetComponent<Rigidbody> ();
+		speedStart = speed;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		transform.Rotate (new Vector3 (0, rotationSpeed,0)*Time.deltaTime);
 
-		timeToChangeDirection -= Time.deltaTime;
+	void Update() {
+		if (gameOver == false) {
+			if (player.transform.position.y > 25f) {
+				speed = speedStart;
+				direction = player.transform.position - rb.position;
+				direction.Normalize ();
+				transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (direction), rotationSpeed * Time.deltaTime);
+			} else {
+				speed = 10f;
+				direction = new Vector3 (Random.Range (-50, 50), 0, Random.Range (-50, 50));
 
-		if (timeToChangeDirection <= 0) {
-			ChangeDirection();
-			timeToChangeDirection = initialTime;
+			}
 		}
-
-		transform.Translate(Vector3.forward * Time.deltaTime * speed);
 	}
 
+	void FixedUpdate() {
+		rb.AddForce(direction * speed);
+	}
+		
 	void OnTriggerEnter (Collider collider)
 	{
 		if (collider.gameObject.tag == "player") 
 		{
 			Destroy(collider.gameObject);
+			gameOver = true;
 		}
-	}
-
-	void ChangeDirection() 
-	{
-		float angle = Random.Range (0f , 360f);
-		transform.rotation = Quaternion.Euler (0, angle, 0);
 	}
 }
