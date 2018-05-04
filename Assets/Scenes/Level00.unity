@@ -771,7 +771,7 @@ MonoBehaviour:
   numOfMines: 35
   numOfScores: 20
   numOfEnemies: 30
-  changeCam: 32
+  changeCam: 0
   startKey: 118
   playCam: 0
   timer: 2
