@@ -11,7 +11,7 @@ public class EnemyBehavior : MonoBehaviour {
 	Vector3 direction;
 	public GameObject player;
 	float speedStart;
-	bool gameOver = false;
+	public static bool gameOver = false;
 
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
@@ -19,17 +19,14 @@ public class EnemyBehavior : MonoBehaviour {
 	}
 
 	void Update() {
-		if (gameOver == false) {
-			if (player.transform.position.y > 25f) {
-				speed = speedStart;
-				direction = player.transform.position - rb.position;
-				direction.Normalize ();
-				transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (direction), rotationSpeed * Time.deltaTime);
-			} else {
-				speed = 10f;
-				direction = new Vector3 (Random.Range (-50, 50), 0, Random.Range (-50, 50));
-
-			}
+		if (player.transform.position.y > 25f) {
+			speed = speedStart;
+			direction = player.transform.position - rb.position;
+			direction.Normalize ();
+			transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (direction), rotationSpeed * Time.deltaTime);
+		} else {
+			speed = 10f;
+			direction = new Vector3 (Random.Range (-50, 50), 0, Random.Range (-50, 50));
 		}
 	}
 

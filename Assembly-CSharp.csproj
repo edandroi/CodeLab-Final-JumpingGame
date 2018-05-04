@@ -99,12 +99,12 @@
      <Compile Include="Assets\Scripts\CameraRotation.cs" />
      <Compile Include="Assets\Scripts\EnemyBehavior.cs" />
      <Compile Include="Assets\Scripts\GameManager.cs" />
+     <Compile Include="Assets\Scripts\GoalBehavior.cs" />
      <Compile Include="Assets\Scripts\JumpAni.cs" />
      <Compile Include="Assets\Scripts\MainScreen.cs" />
      <Compile Include="Assets\Scripts\MineMovement.cs" />
      <Compile Include="Assets\Scripts\PlayerExplosion.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
-     <Compile Include="Assets\Scripts\ScoreBehaviour.cs" />
      <Compile Include="Assets\Scripts\Starting.cs" />
      <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EditorLabel.cs" />
      <Compile Include="Assets\ShaderForge\Example Assets\Scripts\EnableCameraDepthInForward.cs" />

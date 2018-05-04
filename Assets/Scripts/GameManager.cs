@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
 
 	public bool play = false;
@@ -26,6 +27,8 @@ public class GameManager : MonoBehaviour {
 	static bool playerCamera = false;
 	public static int score = 0;
 	public bool playCam;
+	public float timer = 2f;
+//	public Text scoreText;
 
 	void Start () {
 		camPlayer = GameObject.Find ("PlayerCamera").GetComponent<Camera> ();
@@ -92,6 +95,21 @@ public class GameManager : MonoBehaviour {
 		}
 
 		Debug.Log (score);
+
+
+		if (EnemyBehavior.gameOver == true)
+		{
+			Debug.Log ("dead is true");
+
+			timer = timer - Time.deltaTime;
+
+			Debug.Log (timer);
+			if (timer <= 0)
+			{
+				SceneManager.LoadScene("Level00");
+			}
+	
+		}
 	}
 		
 }

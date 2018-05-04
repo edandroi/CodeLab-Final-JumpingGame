@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4007742144294168}
   - component: {fileID: 33972866664669800}
   - component: {fileID: 135273762646399362}
-  - component: {fileID: 114805995160921026}
   - component: {fileID: 23220831233464606}
+  - component: {fileID: 114508489985959130}
   m_Layer: 0
   m_Name: Score
   m_TagString: Untagged
@@ -84,7 +84,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1523142088668728}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114805995160921026
+--- !u!114 &114508489985959130
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1523142088668728}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d03c795d94144428089c078be6797f3c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1489c3f0776354f5e82e5cadb1737573, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   timeToChangeDirection: 8
