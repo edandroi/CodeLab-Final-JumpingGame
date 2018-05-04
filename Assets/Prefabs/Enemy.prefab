@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 23176349073093736}
   - component: {fileID: 114530072240470036}
   - component: {fileID: 54335550594750844}
-  - component: {fileID: 114761082965705514}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: enemy
@@ -128,29 +127,3 @@ MonoBehaviour:
   timeToChangeDirection: 3
   speed: 1
   player: {fileID: 1259916815816686, guid: 9ba8616b02f5748c098c67a4cb716567, type: 2}
---- !u!114 &114761082965705514
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1463180645378672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 373b52eb9bf8c40f785bb6947a1aee66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  version: 1
-  drawGizmos: 1
-  detailedGizmos: 1
-  startEndModifier:
-    addPoints: 0
-    exactStartPoint: 3
-    exactEndPoint: 3
-    useRaycasting: 0
-    mask:
-      m_Bits: 4294967295
-    useGraphRaycasting: 0
-  traversableTags: -1
-  tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
-  graphMask: -1
-  lastPathID: 0

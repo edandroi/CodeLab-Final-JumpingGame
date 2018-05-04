@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
+
+	public bool play = false;
 
 	public static Camera camPlayer;
 	public static Camera camScene;
@@ -12,8 +14,8 @@ public class GameManager : MonoBehaviour {
 	public float numOfMines;
 	public float numOfScores;
 	public float numOfEnemies;
-//	public Transform enemySpawnPoints[];
 	public KeyCode changeCam;
+	public KeyCode startKey;
 	bool camSwitch = false;
 	int i;
 	int s;
@@ -28,7 +30,7 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 		camPlayer = GameObject.Find ("PlayerCamera").GetComponent<Camera> ();
 		camScene = GameObject.Find ("Main Camera").GetComponent<Camera> ();
-//		camPlayerDown = 
+
 
 		// TWO CAMERAS
 		camPlayer.gameObject.SetActive(false);
@@ -74,17 +76,22 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void Update () {
+
 		playCam = playerCamera;
 
 		if (camPlayer == null) {
 			camScene.gameObject.SetActive (true);
 		}
 		// SWITCHING BETWEEN CAMERAS
-		if (Input.GetKeyDown (changeCam)) 
-		{
+		if (Input.GetKeyDown (changeCam)) {
 			ToggleCamera ();
 		}
-			
+
+		if (Input.GetKeyDown (startKey)) {
+			SceneManager.LoadScene ("Game");
+		}
+
 		Debug.Log (score);
 	}
+		
 }
