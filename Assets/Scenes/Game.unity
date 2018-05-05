@@ -562,6 +562,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1463180645378672, guid: 412505b670e014435bb5db31c144f5a5, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 412505b670e014435bb5db31c144f5a5, type: 2}
   m_IsPrefabParent: 0
@@ -595,7 +599,7 @@ MonoBehaviour:
   play: 0
   mineObj: {fileID: 1539011047051042, guid: 0e3c4a552192f4107ac202a2fea6ef92, type: 2}
   scoreObj: {fileID: 1523142088668728, guid: e78847aaa54854d21a45302f88984571, type: 2}
-  enemy: {fileID: 1463180645378672, guid: 412505b670e014435bb5db31c144f5a5, type: 2}
+  enemy: {fileID: 1926072092080252, guid: 392fd403a96624091985869aa677c2e9, type: 2}
   numOfMines: 35
   numOfScores: 20
   numOfEnemies: 30
