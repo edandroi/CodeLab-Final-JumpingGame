@@ -7,8 +7,11 @@ public class GameManager : MonoBehaviour {
 
 	public bool play = false;
 
+	public Camera playerCameraRef;
+
 	public static Camera camPlayer;
 	public static Camera camScene;
+
 	public GameObject mineObj;
 	public GameObject scoreObj;
 	public GameObject enemy; 
@@ -30,8 +33,15 @@ public class GameManager : MonoBehaviour {
 	public float timer = 2f;
 //	public Text scoreText;
 
+	public GameObject playerCamObj;
+
 	void Start () {
-		camPlayer = GameObject.Find ("PlayerCamera").GetComponent<Camera> ();
+
+
+
+		camPlayer = GameObject.Find ("PlayerBall/PlayerCamera").GetComponent<Camera>();
+	
+		Debug.Log (camPlayer);
 		camScene = GameObject.Find ("Main Camera").GetComponent<Camera> ();
 
 

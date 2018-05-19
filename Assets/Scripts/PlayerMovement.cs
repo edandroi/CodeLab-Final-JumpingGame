@@ -16,11 +16,14 @@ public class PlayerMovement : MonoBehaviour {
 	private Rigidbody playerRb;
 	public GameObject explosion;
 
+	private Vector3 originalScale;
 
+	public float fallSpeed;
 	// Use this for initialization
 	void Start () {
 		jumpSpeedStart = jumpSpeed;
 		playerRb = GetComponent<Rigidbody> ();
+		originalScale = transform.localScale;
 	}
 	
 	// Update is called once per frame
@@ -57,12 +60,12 @@ public class PlayerMovement : MonoBehaviour {
 
 		//JUMP ANIMATION
 
-		var originalScale = transform.localScale;
 		var middleScale = new Vector3 (0.5f, 2f, 0.5f);
 		var hitScale = new Vector3 (1.5f, 0.5f, 1.5f);
 
 
-
+		fallSpeed = Mathf.Abs (playerRb.velocity.y);
+		transform.localScale = Vector3.Lerp (originalScale, middleScale, fallSpeed / jumpSpeed);
 
 //		float currentSpeed = Mathf.Abs (playerRb.velocity);
 //

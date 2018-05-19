@@ -6,16 +6,18 @@ public class EnemyBehavior : MonoBehaviour {
 	public float rotationSpeed;
 	public float timeToChangeDirection;
 	public float speed;
+	public GameObject player;
+	public Transform target;
 	float initialTime;
 	Rigidbody rb;
 	Vector3 direction;
-	public GameObject player;
 	float speedStart;
 	public static bool gameOver = false;
 
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
 		speedStart = speed;
+		player = GameObject.FindGameObjectWithTag ("player");
 	}
 
 	void Update() {
@@ -25,12 +27,17 @@ public class EnemyBehavior : MonoBehaviour {
 			direction.Normalize ();
 			transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (direction), rotationSpeed * Time.deltaTime);
 		} else {
-			speed = 10f;
-			direction = new Vector3 (Random.Range (-50, 50), 0, Random.Range (-50, 50));
+			Debug.Log ("HELLO");
+			speed = 5f;
+			direction = transform.forward;
+			transform.Rotate (0, Random.Range(-180f, 180f) * Time.deltaTime, 0);
+			//transform.eulerAngles += Vector3.up * 10 * Time.deltaTime;
+			//direction = new Vector3 (Random.Range (-50, 50), 0, Random.Range (-50, 50));
 		}
 	}
 
 	void FixedUpdate() {
+		//transform.LookAt (target);
 		rb.AddForce(direction * speed);
 	}
 		
