@@ -249,6 +249,7 @@ MonoBehaviour:
   jump: 1
   dead: 0
   explosion: {fileID: 1904004269162294, guid: 3784e6f06d9da43b2a8dc912951ee415, type: 2}
+  fallSpeed: 0
 --- !u!54 &682977507
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -333,6 +334,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1547479045}
+  - {fileID: 1974000601}
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -765,6 +767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   play: 0
+  playerCameraRef: {fileID: 0}
   mineObj: {fileID: 1539011047051042, guid: 0e3c4a552192f4107ac202a2fea6ef92, type: 2}
   scoreObj: {fileID: 1523142088668728, guid: e78847aaa54854d21a45302f88984571, type: 2}
   enemy: {fileID: 1463180645378672, guid: 412505b670e014435bb5db31c144f5a5, type: 2}
@@ -775,6 +778,7 @@ MonoBehaviour:
   startKey: 118
   playCam: 0
   timer: 2
+  playerCamObj: {fileID: 0}
 --- !u!4 &1420536442
 Transform:
   m_ObjectHideFlags: 0
@@ -1003,7 +1007,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1547479044
 GameObject:
@@ -1257,7 +1261,7 @@ RectTransform:
   - {fileID: 1464356761}
   - {fileID: 825500890}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1278,12 +1282,12 @@ GameObject:
   - component: {fileID: 1974000603}
   - component: {fileID: 1974000602}
   m_Layer: 0
-  m_Name: Camera Down
+  m_Name: CameraDown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1974000601
 Transform:
   m_ObjectHideFlags: 0
@@ -1291,12 +1295,12 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1974000600}
-  m_LocalRotation: {x: -0.7071068, y: -0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 1.6, y: -1.300003, z: -0.3}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 1.6, y: -38.9, z: -0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 682977511}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!114 &1974000602
 MonoBehaviour:

@@ -27,8 +27,7 @@ public class EnemyBehavior : MonoBehaviour {
 			direction.Normalize ();
 			transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (direction), rotationSpeed * Time.deltaTime);
 		} else {
-			Debug.Log ("HELLO");
-			speed = 5f;
+			speed = 2f;
 			direction = transform.forward;
 			transform.Rotate (0, Random.Range(-180f, 180f) * Time.deltaTime, 0);
 			//transform.eulerAngles += Vector3.up * 10 * Time.deltaTime;

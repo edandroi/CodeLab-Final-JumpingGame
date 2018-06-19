@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
 
 	public static Camera camPlayer;
 	public static Camera camScene;
-
+	public static Camera camDown;
 	public GameObject mineObj;
 	public GameObject scoreObj;
 	public GameObject enemy; 
@@ -38,16 +38,15 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 
 
-
+		camDown = GameObject.Find ("CameraDown").GetComponent<Camera> ();
 		camPlayer = GameObject.Find ("PlayerBall/PlayerCamera").GetComponent<Camera>();
-	
-		Debug.Log (camPlayer);
 		camScene = GameObject.Find ("Main Camera").GetComponent<Camera> ();
 
 
 		// TWO CAMERAS
-		camPlayer.gameObject.SetActive(false);
-		camScene.gameObject.SetActive (true);
+		camDown.enabled = false;
+		camPlayer.enabled = false;
+		camScene.enabled = true;
 
 		//MINE SPAWN
 			
@@ -80,11 +79,11 @@ public class GameManager : MonoBehaviour {
 		playerCamera = !playerCamera;
 
 		if (playerCamera) {
-			camPlayer.gameObject.SetActive (true);
-			camScene.gameObject.SetActive (false);
+			camPlayer.enabled = true;
+			camDown.enabled = false;
 		} else {
-			camScene.gameObject.SetActive (true);
-			camPlayer.gameObject.SetActive (false);
+			camPlayer.enabled = false;
+			camDown.enabled = true;
 		}
 	}
 
