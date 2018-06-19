@@ -13,6 +13,8 @@ public class EnemyBehavior : MonoBehaviour {
 	Vector3 direction;
 	float speedStart;
 	public static bool gameOver = false;
+	float angle;
+	public float distanceFromPlayer;
 
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
@@ -21,18 +23,21 @@ public class EnemyBehavior : MonoBehaviour {
 	}
 
 	void Update() {
-		if (player.transform.position.y > 25f) {
-			speed = speedStart;
-			direction = player.transform.position - rb.position;
-			direction.Normalize ();
-			transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (direction), rotationSpeed * Time.deltaTime);
-		} else {
-			speed = 2f;
-			direction = transform.forward;
-			transform.Rotate (0, Random.Range(-180f, 180f) * Time.deltaTime, 0);
-			//transform.eulerAngles += Vector3.up * 10 * Time.deltaTime;
-			//direction = new Vector3 (Random.Range (-50, 50), 0, Random.Range (-50, 50));
+
+		if (GameObject.Find("PlayerBall") != null){
+			if (player.transform.position.y > distanceFromPlayer) {
+				speed = speedStart;
+				direction = player.transform.position - rb.position;
+				direction.Normalize ();
+				transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (direction), rotationSpeed * Time.deltaTime);
+			} else {
+				angle = Random.Range (-180f, 180f);
+				speed = 2f;
+				direction = transform.forward;
+				transform.Rotate (0, angle * Time.deltaTime, 0);
+			}
 		}
+
 	}
 
 	void FixedUpdate() {
@@ -47,5 +52,19 @@ public class EnemyBehavior : MonoBehaviour {
 			Destroy(collider.gameObject);
 			gameOver = true;
 		}
+
+		if (collider.gameObject.tag == "border") 
+		{
+			Debug.Log ("enemy collided border");
+			ChangeDirection ();
+		}
+	}
+
+	void ChangeDirection() 
+	{
+		angle *= -1;
+		speed = 2f;
+		direction = transform.forward;
+		transform.Rotate (0, angle * Time.deltaTime, 0);
 	}
 }

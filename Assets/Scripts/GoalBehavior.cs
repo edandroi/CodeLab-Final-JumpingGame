@@ -42,5 +42,10 @@ public class GoalBehavior : MonoBehaviour {
 			GameManager.score++;
 
 		}
+
+		if (other.gameObject.tag == "border")
+		{
+			ChangeDirection ();
+		}
 	}
 }

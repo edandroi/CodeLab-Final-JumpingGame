@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour {
 	public KeyCode keyRight;
 	public KeyCode keyLeft;
 	public float speed;
+	float speedCurrent; 
+	public float ease;
 	public float jumpSpeed;
 	float jumpSpeedStart;
 	public bool jump = false;
@@ -24,6 +26,7 @@ public class PlayerMovement : MonoBehaviour {
 		jumpSpeedStart = jumpSpeed;
 		playerRb = GetComponent<Rigidbody> ();
 		originalScale = transform.localScale;
+		speedCurrent = 0f;
 	}
 	
 	// Update is called once per frame
@@ -34,21 +37,34 @@ public class PlayerMovement : MonoBehaviour {
 		//PLAYER MOVEMENT
 
 		if (Input.GetKey(keyRight))
-		{
-			transform.position += transform.right*speed*Time.deltaTime;
+		{	
+			transform.position += transform.right * speedCurrent * Time.deltaTime;
+			if (speedCurrent < speed) {
+				speedCurrent += ease;
+			}
 		}
 
 		if (Input.GetKey(keyLeft))
-		{
-			transform.position -= transform.right*speed*Time.deltaTime;
+		{	
+			transform.position -= transform.right*speedCurrent*Time.deltaTime;
+			if (speedCurrent < speed) {
+				speedCurrent += ease;
+			}
 		}
 
-		if (Input.GetKey (keyUp)) {
-			transform.position += transform.forward*speed*Time.deltaTime;
+		if (Input.GetKey (keyUp)) 
+		{
+			transform.position += transform.forward*speedCurrent*Time.deltaTime;
+			if (speedCurrent < speed) {
+				speedCurrent += ease;
+			}
 		}
 
 		if (Input.GetKey (keyDown)) {
-			transform.position -= transform.forward * speed * Time.deltaTime;
+			transform.position -= transform.forward * speedCurrent * Time.deltaTime;
+			if (speedCurrent < speed) {
+				speedCurrent += ease;
+			}
 		}
 
 //		if (Input.GetKeyDown (KeyCode.D)) {
@@ -77,8 +93,8 @@ public class PlayerMovement : MonoBehaviour {
 	}
 
 
-	void OnTriggerEnter (Collider collider)
-	{
+		void OnTriggerEnter (Collider collider)
+		{
 		if (collider.gameObject.tag == "ground") 
 		{
 			Jump ();

@@ -154,6 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 1
   timeToChangeDirection: 10
-  speed: 2
+  speed: 3
   player: {fileID: 1259916815816686, guid: 9ba8616b02f5748c098c67a4cb716567, type: 2}
   target: {fileID: 4402658732995294, guid: 9ba8616b02f5748c098c67a4cb716567, type: 2}
+  distanceFromPlayer: 20

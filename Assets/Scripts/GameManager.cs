@@ -80,9 +80,11 @@ public class GameManager : MonoBehaviour {
 
 		if (playerCamera) {
 			camPlayer.enabled = true;
+			camScene.enabled = false;
 			camDown.enabled = false;
 		} else {
 			camPlayer.enabled = false;
+			camScene.enabled = false;
 			camDown.enabled = true;
 		}
 	}
@@ -90,25 +92,24 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 
 		playCam = playerCamera;
-
 		if (camPlayer == null) {
-			camScene.gameObject.SetActive (true);
+			camScene.enabled = true;
+			camDown.enabled = false;
 		}
-		// SWITCHING BETWEEN CAMERAS
-		if (Input.GetKeyDown (changeCam)) {
-			ToggleCamera ();
+		if (EnemyBehavior.gameOver == false) {
+			// SWITCHING BETWEEN CAMERAS
+			if (Input.GetKeyDown (changeCam)) {
+				ToggleCamera ();
+			}
+
+			if (Input.GetKeyDown (startKey)) {
+				SceneManager.LoadScene ("Game");
+			}
+
 		}
-
-		if (Input.GetKeyDown (startKey)) {
-			SceneManager.LoadScene ("Game");
-		}
-
-		Debug.Log (score);
-
-
-		if (EnemyBehavior.gameOver == true)
+		else
 		{
-
+			Debug.Log ("GameOver");
 			timer = timer - Time.deltaTime;
 
 			if (timer <= 0)

@@ -11,6 +11,7 @@ TagManager:
   - score
   - mine
   - ui
+  - border
   layers:
   - Default
   - TransparentFX
