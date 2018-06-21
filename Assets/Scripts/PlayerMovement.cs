@@ -21,17 +21,37 @@ public class PlayerMovement : MonoBehaviour {
 	private Vector3 originalScale;
 
 	public float fallSpeed;
+
+	// AUDIO
+	public AudioClip scoreSound;
+	public AudioSource scoreSoundSource;
+
+	// INTERACTIONS WITH OBJECTS
+	//shield
+	public bool shielded = false;
+	public float timerShield;
+	float timerShieldCountdown;
+	//safe jump
+	public float safeJumpSpeed;
+	bool safeJump = false;
+
+
 	// Use this for initialization
 	void Start () {
+		timerShieldCountdown = timerShield;
 		jumpSpeedStart = jumpSpeed;
 		playerRb = GetComponent<Rigidbody> ();
 		originalScale = transform.localScale;
 		speedCurrent = 0f;
+		scoreSoundSource = GetComponent<AudioSource> ();
+
+		// SCORE SOUND
+		scoreSoundSource.playOnAwake = false;
+		scoreSoundSource.clip = scoreSound;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
 
 
 		//PLAYER MOVEMENT
@@ -67,46 +87,71 @@ public class PlayerMovement : MonoBehaviour {
 			}
 		}
 
-//		if (Input.GetKeyDown (KeyCode.D)) {
-//			GameManager.ToggleCamera ();
-//			dead = true;
-//			Destroy (gameObject);
-//			Instantiate (explosion, transform.position, transform.rotation);
-//		}
+		Debug.Log ("shielded is" + shielded);
 
 		//JUMP ANIMATION
 
 		var middleScale = new Vector3 (0.5f, 2f, 0.5f);
-		var hitScale = new Vector3 (1.5f, 0.5f, 1.5f);
+//		var hitScale = new Vector3 (1.5f, 0.5f, 1.5f);
 
 
 		fallSpeed = Mathf.Abs (playerRb.velocity.y);
 		transform.localScale = Vector3.Lerp (originalScale, middleScale, fallSpeed / jumpSpeed);
-
-//		float currentSpeed = Mathf.Abs (playerRb.velocity);
-//
-//		if (currentSpeed <= 2.0f) {
-//			transform.localScale = Vector3.Lerp(middleScale, originalScale, playerRb.velocity/jumpSpeed);
-//
-//		}
-
 	}
 
 
 		void OnTriggerEnter (Collider collider)
 		{
-		if (collider.gameObject.tag == "ground") 
-		{
-			Jump ();
-		}
-		if (collider.gameObject.tag == "enemy") 
-		{
-			GameManager.ToggleCamera ();
-			dead = true;
-			Destroy (gameObject);
-			Instantiate (explosion, transform.position, transform.rotation);
+			if (collider.gameObject.tag == "ground") 
+			{
+				Jump ();
+				if (safeJump == true) {
+					safeJumpSpeed += 1f;
+				}
+			}
+			if (collider.gameObject.tag == "enemy") 
+			{
+				if (shielded == false) {
+					GameManager.ToggleCamera ();
+					dead = true;
+					Destroy (gameObject);
+					Instantiate (explosion, transform.position, transform.rotation);
+				} 
+			}
+			if (collider.gameObject.tag == "score") 
+			{
+				ScoreSound ();
+			}
+
+
+			// SAFE JUMP
+			if (collider.gameObject.tag == "safeJump")
+			{
+				safeJump = true;
+				jumpSpeed = safeJumpSpeed;
+
+				if (safeJumpSpeed == jumpSpeedStart) {
+					safeJump = false;
+				}
+			}
+
+			// SHIELD
+			if (collider.gameObject.tag == "shield") 
+			{
+				shielded = true;
+			}
+			
+			if (shielded == true) 
+			{
 	
-		}
+			timerShieldCountdown -= Time.deltaTime ;
+
+					if (timerShield <= 0)
+					{
+						shielded = false;
+						timerShieldCountdown = timerShield;
+					}	
+			}	
 	}
 
 	void Jump ()
@@ -114,5 +159,10 @@ public class PlayerMovement : MonoBehaviour {
 
 		playerRb.velocity = new Vector3 (0, jumpSpeed, 0);
 
+	}
+
+	void ScoreSound()
+	{
+		GetComponent<AudioSource> ().Play ();
 	}
 }

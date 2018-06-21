@@ -12,18 +12,21 @@ public class GameManager : MonoBehaviour {
 	public static Camera camPlayer;
 	public static Camera camScene;
 	public static Camera camDown;
-	public GameObject mineObj;
+	public GameObject shieldObj;
 	public GameObject scoreObj;
+	public GameObject jumpObj;
 	public GameObject enemy; 
-	public float numOfMines;
+	public float numOfShields;
 	public float numOfScores;
 	public float numOfEnemies;
+	public float numOfJumps;
 	public KeyCode changeCam;
 	public KeyCode startKey;
-	bool camSwitch = false;
+//	bool camSwitch = false;
 	int i;
 	int s;
 	int e;
+	int j;
 	float xValue;
 	float zValue;
 	float z;
@@ -48,14 +51,23 @@ public class GameManager : MonoBehaviour {
 		camPlayer.enabled = false;
 		camScene.enabled = true;
 
-		//MINE SPAWN
+		//SHIELD SPAWN
 			
-			for (i = 0; i < numOfMines; i++) {
+			for (i = 0; i < numOfShields; i++) {
 				z = Random.Range (0, 60);
 				xValue = Random.Range(-30, 30);
 				zValue = Random.Range(-30, 30);	
-				Instantiate (mineObj, new Vector3 (xValue, 0, zValue), new Quaternion (0, z, 0, 0));
+				Instantiate (shieldObj, new Vector3 (xValue, 0, zValue), new Quaternion (0, z, 0, 0));
 			}
+		//SAFEJUMP SPAWN
+
+			for (j = 0; j < numOfJumps; j++) {
+				z = Random.Range (0, 60);
+				xValue = Random.Range(-30, 30);
+				zValue = Random.Range(-30, 30);	
+				Instantiate (jumpObj, new Vector3 (xValue, 0, zValue), new Quaternion (0, z, 0, 0));
+			}
+
 		//GOAL SPAWN
 			for (s = 0; s < numOfScores; s++) {
 				z = Random.Range (0, 60);
@@ -109,7 +121,6 @@ public class GameManager : MonoBehaviour {
 		}
 		else
 		{
-			Debug.Log ("GameOver");
 			timer = timer - Time.deltaTime;
 
 			if (timer <= 0)

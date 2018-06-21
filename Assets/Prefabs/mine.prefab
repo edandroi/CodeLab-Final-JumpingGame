@@ -113,6 +113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToChangeDirection: 4
   speed: 3
+  explosion: {fileID: 0}
 --- !u!135 &135968861404056818
 SphereCollider:
   m_ObjectHideFlags: 1

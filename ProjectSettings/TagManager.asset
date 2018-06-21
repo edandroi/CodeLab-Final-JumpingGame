@@ -12,6 +12,8 @@ TagManager:
   - mine
   - ui
   - border
+  - shield
+  - safeJump
   layers:
   - Default
   - TransparentFX
