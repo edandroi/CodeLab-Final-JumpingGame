@@ -93,6 +93,7 @@ public class PlayerMovement : MonoBehaviour {
 
 		var middleScale = new Vector3 (0.5f, 2f, 0.5f);
 //		var hitScale = new Vector3 (1.5f, 0.5f, 1.5f);
+		Debug.Log("Jump Speed is "+jumpSpeed);
 
 
 		fallSpeed = Mathf.Abs (playerRb.velocity.y);
@@ -106,7 +107,7 @@ public class PlayerMovement : MonoBehaviour {
 			{
 				Jump ();
 				if (safeJump == true) {
-					safeJumpSpeed += 1f;
+				jumpSpeed += 1f;
 				}
 			}
 			if (collider.gameObject.tag == "enemy") 
